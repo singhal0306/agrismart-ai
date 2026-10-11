@@ -1,143 +1,120 @@
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/style.css" />
-</head>
-
-
-<body class="overlay">
-    <div class="grid">
-        <div></div>
-        <div class="overlay_div"><img src="../static/curaj-logo.png" alt="..."></div>
-        <div></div>
-    </div>
-    <div id="img">
-        <h1 id="main_head">Maximizing Yield: Smart Crop Recommendations</h1>
-        <h2 id="second_head">Our Innovative Solution: A Smart Crop Recommendation System.</h2>
-        <div class="container-fluid h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-md-8 col-xl-6 chat">
-                    <div class="card">
-                        <div class="card-header msg_head">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../static/our_logo.png" class="rounded-circle user_img" alt="..">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>ChatBot</span>
-                                    <p>Ask me anything!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="messageFormeight" class="card-body msg_card_body">
-                            <div class="d-flex justify-content-start mb-4">
-                                <div class="img_cont_msg"><img src="../static/our_logo.png"
-                                        class="rounded-circle user_img_msg"></div>
-                                <div class="msg_cotainer">🌾 Welcome to the Crop Recommendation Chatbot! 🌾<br>
-
-                                    I'm here to help you make informed decisions about the best crops to plant based on
-                                    atmospheric conditions and price predictions. Whether you're a seasoned farmer or
-                                    just getting started, I've got you covered. <br>
-                                    <br>
-                                    You can ask me questions like: <br>
-                                    - Press 1: "What should I plant this season?" <br>
-                                    - Press 2: "Can you recommend crops with good price predictions?" <br>
-                                    <br>
-                                    Feel free to explore and ask anything related to crop recommendations and
-                                    atmospheric conditions. Let's work together to maximize your agricultural yield!
-                                    <br>
-                                    <span class="msg_time" id="time_init"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <form id="messageArea" class="input-group" method="GET">
-                                <input type="text" id="text" name="msg" placeholder="Type your message..."
-                                    autocomplete="off" class="form-control type_msg" required />
-                                <div class="input-group-append">
-                                    <button type="submit" id="send" class="input-group-text send_btn" title="submit"><i
-                                            class="fas fa-location-arrow"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Recommendation Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">🌱</div>
+          <span>AgriSmart AI</span>
         </div>
+        <div class="status-pill">Live field assistant</div>
+      </header>
+
+      <main class="main-panel">
+        <section class="hero">
+          <div class="tag">AI-powered farming</div>
+          <h1>Smarter crop decisions for better harvests.</h1>
+          <p>
+            Get crop recommendations based on soil and weather conditions, and estimate price trends for your market.
+          </p>
+
+          <div class="quick-actions">
+            <button class="quick-action" data-choice="1">1. Crop recommendation</button>
+            <button class="quick-action" data-choice="2">2. Price prediction</button>
+          </div>
+        </section>
+
+        <section class="chat-panel">
+          <div class="chat-header">
+            <div class="chat-header-left">
+              <div class="avatar">AI</div>
+              <div class="chat-name">
+                <h3>Crop Advisor</h3>
+                <p>Ask me anything</p>
+              </div>
+            </div>
+            <div class="online-dot" aria-label="online"></div>
+          </div>
+
+          <div id="messageBox" class="chat-body">
+            <div class="message bot">
+              <div class="bubble">{{ welcome_message | safe }}</div>
+            </div>
+          </div>
+
+          <form id="chatForm" class="chat-form">
+            <input
+              id="userInput"
+              type="text"
+              name="msg"
+              placeholder="Type your answer here..."
+              autocomplete="off"
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const messageContainer = document.getElementById("messageFormeight");
-        const messageInput = document.getElementById("text");
-        const sendMessageButton = document.getElementById("send");
+      const chatForm = document.getElementById('chatForm');
+      const userInput = document.getElementById('userInput');
+      const messageBox = document.getElementById('messageBox');
+      const quickButtons = document.querySelectorAll('.quick-action');
 
-        function scrollToBottom() {
-            messageContainer.scrollTop = messageContainer.scrollHeight;
-        }
+      function addMessage(text, sender) {
+        const wrapper = document.createElement('div');
+        wrapper.className = `message ${sender}`;
 
-        function appendMessage(message, isUser) {
-            const messageDiv = document.createElement("div");
-            messageDiv.className = `d-flex justify-content-${isUser ? "end" : "start"} mb-4`;
-            messageDiv.innerHTML = `
-                <div class="img_cont_msg"><img src="${isUser ? 'https://i.ibb.co/d5b84Xw/Untitled-design.png' : 'https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png'}" class="rounded-circle user_img_msg"></div>
-                <div class="msg_cotainer">${message}<span class="msg_time">${getCurrentTime()}</span></div>
-            `;
-            messageContainer.appendChild(messageDiv);
-            scrollToBottom();
-        }
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.innerHTML = text;
 
-        function getCurrentTime() {
-            const date = new Date();
-            const hour = date.getHours();
-            const minute = date.getMinutes();
-            return `${hour}:${minute}`;
-        }
+        wrapper.appendChild(bubble);
+        messageBox.appendChild(wrapper);
+        messageBox.scrollTop = messageBox.scrollHeight;
+      }
 
-        $(document).ready(function () {
-            // Automatically scroll to the bottom when the page loads
-            scrollToBottom();
+      function sendMessage(prompt) {
+        if (!prompt.trim()) return;
 
-            $("#messageArea").submit(function (event) {
-                event.preventDefault();
-                const userMessage = messageInput.value;
-                if (userMessage.trim() === "") return;
+        addMessage(prompt, 'user');
+        userInput.value = '';
 
-                appendMessage(userMessage, true);
-                messageInput.value = "";
+        fetch('/get', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: new URLSearchParams({ msg: prompt })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            addMessage(data.result, 'bot');
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            addMessage('Something went wrong. Please try again.', 'bot');
+          });
+      }
 
-                $.ajax({
-                    data: {
-                        msg: userMessage,
-                    },
-                    type: "POST",
-                    url: "/get",
-                    success: function (data) {
-                        appendMessage(data.result, false);
-                        scrollToBottom();
-                    },
-                    error: function (error) {
-                        console.error('Error:', error);
-                    }
-                });
-            });
+      chatForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        sendMessage(userInput.value);
+      });
+
+      quickButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          sendMessage(button.dataset.choice);
         });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
