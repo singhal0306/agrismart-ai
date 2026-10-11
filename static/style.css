@@ -11,7 +11,7 @@ body,html{
 	position: relative;
     width: 100%; /* You can adjust the width as needed */
     height: 100%;
-    background: linear-gradient(0deg, rgba(44, 47, 59, 0.54), rgba(44, 47, 59, 0.69)), url('./crops/pexels-tim-mossholder-974314.jpg');
+    background: linear-gradient(0deg, rgba(44, 47, 59, 0.54), rgba(44, 47, 59, 0.69)), url('./background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }

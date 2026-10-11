@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 @app.route('/')
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     from sklearn.metrics import classification_report
     from sklearn import metrics
     from sklearn import tree
-    df = pd.read_csv('Crop_recommendation.csv')
+    df = pd.read_csv('data/crop_recommendation.csv')
     features = df[['N', 'P','K','temperature', 'humidity', 'ph', 'rainfall']]
     target = df['label']
     labels = df['label']
