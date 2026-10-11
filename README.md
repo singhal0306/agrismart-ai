@@ -1,45 +1,53 @@
-# Crop-Recommendation-Chatbot
-Crop Recommendation Chatbot is an AI-powered application designed to assist farmers and agricultural enthusiasts in making informed decisions about crop selection based on various factors such as soil type, climate, and historical crop data. This project aims to enhance crop yield and sustainability in agriculture by providing personalized crop recommendations.
+# AgriSmart AI
 
-## Table of Contents
-- [Features](#features)
-- [Key Technologies](#key-technologies)
-- [Usage](#usage)
-- [Contributions](#contributions)
-- [Getting Started](#getting-started)
-- [Disclaimer](#disclaimer)
+A modern Flask-based crop recommendation and price prediction chatbot for farmers and agriculture enthusiasts.
+
+## Overview
+This project helps users:
+- choose the best crop based on soil and weather parameters
+- estimate crop market price trends using historical data
+- interact through a clean, responsive chatbot UI
 
 ## Features
-- Recommends suitable crops based on user-provided information.
-- Utilizes machine learning algorithms for crop prediction.
-- Recommend the predicted price for the crop for next season according to location. 
-- User-friendly chat interface for easy interaction.
-- Accessible via web application.
+- Crop recommendation using a Random Forest classifier
+- Market price prediction using a Random Forest regressor
+- Step-by-step chatbot flow for guided input
+- Modern UI built with HTML, CSS, and JavaScript
+- Responsive design for desktop and mobile screens
 
+## Tech Stack
+- Python
+- Flask
+- scikit-learn
+- Pandas
+- NumPy
+- HTML/CSS/JavaScript
 
-## Key Technologies
-- Machine Learning models for crop prediction.
-- Python, Flask for the backend.
-- HTML, CSS, JavaScript for the frontend.
+## Project Structure
+- `app.py` — compatibility entry point for the Flask app
+- `run.py` — recommended startup script
+- `crop_app/__init__.py` — app factory and package setup
+- `crop_app/ml.py` — ML model loading and prediction logic
+- `crop_app/routes.py` — route definitions and chat flow
+- `templates/chat.html` — chatbot frontend
+- `static/style.css` — modern styling
+- `data/` — crop recommendation and price prediction datasets
 
-## Usage
-1. Users input their location, soil type, and climate conditions.
-2. The chatbot processes the data and suggests suitable crop options.
-3. Users can explore detailed information about recommended crops.
-4. Farmers can make informed decisions for crop planning.
+## Run Locally
+1. Install dependencies.
+2. Start the Flask app:
+   ```bash
+   python run.py
+   ```
+3. Open the browser and visit:
+   ```bash
+   http://localhost:5000
+   ```
 
-## Contributions
-Contributions and feedback from the developer community are welcome! Whether you're interested in improving the chatbot's algorithms, enhancing the user interface, or expanding its functionality, we encourage you to get involved.
+## Usage Flow
+1. Select `1` for crop recommendation or `2` for price prediction
+2. Enter the required values when prompted
+3. Receive the AI-generated output in the chat interface
 
-## Getting Started
-To run the Crop Recommendation Chatbot locally or contribute to its development, follow these steps:
-1. Clone the repository.
-2. Set up the required dependencies as mentioned in the documentation.
-3. Run the application and start interacting with the chatbot.
-
-## Disclaimer
-This chatbot provides recommendations based on data and algorithms, but it's essential to consult with agricultural experts and consider local conditions for the best results in real-world farming scenarios.
-
-
-![image](https://github.com/singhal0306/Crop-Recommendation-Chatbot/assets/86726484/839feb8e-2d8a-4cbd-8f3c-30580bae1890)
-![image](https://github.com/singhal0306/Crop-Recommendation-Chatbot/assets/86726484/0560c9a6-9975-4347-b728-14aa6aba2a2b)
+## Notes
+This app is intended for educational and prototype use. For real-world deployment, it should be validated against local agronomy and market conditions before being used in production decisions.
