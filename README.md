@@ -8,6 +8,8 @@ This project helps users:
 - estimate crop market price trends using historical data
 - interact through a clean, responsive chatbot UI
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c8510bb5-9a95-4a56-b327-15dc13a01ad6" />
+
 ## Features
 - Crop recommendation using a Random Forest classifier
 - Market price prediction using a Random Forest regressor
@@ -24,7 +26,6 @@ This project helps users:
 - HTML/CSS/JavaScript
 
 ## Project Structure
-- `app.py` — compatibility entry point for the Flask app
 - `run.py` — recommended startup script
 - `crop_app/__init__.py` — app factory and package setup
 - `crop_app/ml.py` — ML model loading and prediction logic
@@ -51,3 +52,5 @@ This project helps users:
 
 ## Notes
 This app is intended for educational and prototype use. For real-world deployment, it should be validated against local agronomy and market conditions before being used in production decisions.
+
+
